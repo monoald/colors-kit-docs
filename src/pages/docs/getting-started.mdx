@@ -21,4 +21,16 @@ category: Basics
 npm install @colors/color-js
 ```
 
-The **color-js** package is built in pure TypeScript and can be used on projects that use vanilla JavaScript or any JavaScript framework.
+The **/color-js** package is built in pure TypeScript and can be used on projects that use vanilla JavaScript or any JavaScript framework.
+
+## Basic Usage
+
+In this section, we will see a simple usage of the **/colors-js** package to convert a color to another format.
+
+```js
+import { hexToRgb } from "@colors/colors-js";
+
+const hexadecimalColor = "#ff4722";
+
+const rgbColor = hexToRgb(hexadecimalColor); // { r: 255, g: 71, b: 34 }
+```

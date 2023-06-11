@@ -1,0 +1,99 @@
+---
+layout: ../../layouts/Page.astro
+title: Convert
+category: API
+---
+
+The Convert API can handle five input color formats and convert them to seven output color formats.
+
+The input formats are: 
+- CMYK
+- Hexadecimal
+- HSL
+- HSV
+- RGB
+
+The output formats are:
+- CMYK
+- Hexadecimal
+- HSL
+- HSV
+- Lab
+- RGB
+- XYZ.
+
+<hr/>
+
+
+
+## cmykTo
+
+The **cmykTo** method convert a cmyk color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#cmyk) for CMYK colors.
+
+```js
+const cmyk = { c: 69, m: 0, y: 42, k: 17 }
+
+cmykToHex(cmyk) // Expected output: '#42D37A'
+
+cmykToHsl(cmyk) // Expected output: { h: 143, s: 62, l: 54 }
+
+cmykToHsv(cmyk) // Expected output: { h: 143, s: 69, v: 83 }
+
+cmykToLab(cmyk) // Expected output: { l: 76, a: -58, b: 33 }
+
+cmykToRgb(cmyk) // Expected output: { r: 66, g: 211, b: 122 }
+
+cmykToXyz(cmyk) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## hexTo
+
+The **hexTo** method convert a hexadecimal color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#hexadecimal) for Hexadecimal colors.
+
+```js
+const hex = '#42D37A'
+
+hexToCmyk(hex) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+hexToHsl(hex) // Expected output: { h: 143, s: 62, l: 54 }
+
+hexToHsv(hex) // Expected output: { h: 143, s: 69, v: 83 }
+
+hexToLab(hex) // Expected output: { l: 76, a: -58, b: 33 }
+
+hexToRgb(hex) // Expected output: { r: 66, g: 211, b: 122 }
+
+hexToXyz(hex) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## hslTo
+
+The **hslTo** method convert a hsl color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#hexadecimal) for HSL colors.
+
+```js
+const hsl = { h: 143, s: 62, l: 54 }
+
+hslToHex(hsl) // Expected output: '#42D37A'
+
+hslToCmyk(hsl) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+hslToHsv(hsl) // Expected output: { h: 143, s: 69, v: 83 }
+
+hslToLab(hsl) // Expected output: { l: 76, a: -58, b: 33 }
+
+hslToRgb(hsl) // Expected output: { r: 66, g: 211, b: 122 }
+
+hslToXyz(hsl) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
