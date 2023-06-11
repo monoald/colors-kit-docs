@@ -21,6 +21,26 @@ The Validate API helps validate colors. It ensures that colors have the correct 
 
 The **validateCmyk** method validate a CMYK color. Its values for cyan (c), magenta (m), yellow (y), and black (k) should be a **number** between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
 
+### Syntax
+
+```js
+validateCmyk(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Cmyk](/formats#cmyk) that contains number values in a certain interval (check [validate API](/validate-api#cmyk)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
 ```js
 validateCmyk({ c: 69, m: 0, y: 42, k: 17 }) // Valid
 
@@ -44,6 +64,26 @@ validateCmyk({ c: 69, m: 0, y: -2, k: 10 })
 ## validateHex
 
 The **validateHex** method validate a hexadecimal color. A hexadecimal color must always start with the "#" symbol. It can have either 3 or 6 digits. Each digit must be between 0 and 15, which means it can be a number from 0 to 9 or a letter from A to F. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateHex(color)
+```
+
+### Parameters
+
+**_color:_** A string with a hash symbol (#) as first character.
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
 
 ```js
 validateHex("#45AA0F") // Valid
@@ -74,6 +114,26 @@ validateHex("#E4")
 
 The **validateHsl** method validates an HSL color. The hue (h) value must be between 0 and 360, and the saturation (s) and lightness (l) values must be between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
 
+### Syntax
+
+```js
+validateHsl(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsl](/formats#hsl) that contains number values in a certain interval (check [validate API](/validate-api#hsl)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
 ```js
 validateHsl({ h: 143, s: 62, l: 54 }) // Valid
 
@@ -97,6 +157,26 @@ validateHsl({ h: -50, s: 62, l: 54 })
 ## validateHsv
 
 The **validateHsv** method validates an HSV color. The hue (h) value must be between 0 and 360, and the saturation (s) and brightness (v) values must be between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateHsv(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsv](/formats#hsv) that contains number values in a certain interval (check [validate API](/validate-api#hsv)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
 
 ```js
 validateHsv({ h: 143, s: 62, l: 54 }) // Valid
@@ -122,6 +202,26 @@ validateHsv({ h: -50, s: 62, v: 54 })
 
 The **validateLab** method validates a LAB color. The lightness (l) value must be between 0 and 100, and the a and b values must be between -128 and 127. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
 
+### Syntax
+
+```js
+validateLab(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Lab](/formats#lab) that contains number values in a certain interval (check [validate API](/validate-api#lab)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
 ```js
 validateLab({ l: 76, a: -58, b: 33 }) // Valid
 
@@ -145,6 +245,26 @@ validateLab({ l: 76, a: -58, b: 333 })
 ## validateRgb
 
 The **validateRgb** method validates an RGB color. Its values for red (r), green (g) and blue (b) should be a **number** between 0 and 255. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateRgb(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Rgb](/formats#rgb) that contains number values in a certain interval (check [validate API](/validate-api#rgb)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
 
 ```js
 validateRgb({ r: 66, g: 211, b: 122 }) // Valid
