@@ -1,0 +1,41 @@
+---
+layout: ../../layouts/Page.astro
+title: From Image
+category: API
+---
+
+The fromImage API work with the colors present on an image.
+
+## extractPalette
+
+The **extractPalette** method extracts the most present colors in an image.
+
+### Syntax
+
+```js
+extractPalette(url, quantity)
+```
+
+### Parameters
+
+**_url:_** A string of an image url.
+**_quantity:_** A number to determine the amount of colors to extract. Due to the used algorithm to extract colors, the greater the quantity of colors, the more time will take to return the values.
+
+### Return value
+
+A promise with an array of [Rgb](/docs/formats#rgb) colors.
+
+### Examples
+
+```js
+const imageUrl = 'https://e1.pxfuel.com/desktop-wallpaper/763/1015/desktop-wallpaper-6-blue-and-pink-landscape-nature-landscape-thumbnail.jpg'
+
+async function extract() {
+  const colors = await extractPalette(imageUrl, 5)
+
+  return colors
+}
+
+extract()
+// Expected output: ["#8c84ea', '#e7a6f9', '#3b7ee4', '#080419', '#3d2585']
+```

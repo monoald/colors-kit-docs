@@ -1,0 +1,326 @@
+---
+layout: ../../layouts/Page.astro
+title: Convert
+category: API
+---
+
+The Convert API can handle five input color formats and convert them to seven output color formats.
+
+The input formats are: 
+- CMYK
+- Hexadecimal
+- HSL
+- HSV
+- RGB
+
+The output formats are:
+- CMYK
+- Hexadecimal
+- HSL
+- HSV
+- Lab
+- RGB
+- XYZ.
+
+Every method uses the [validate API](http://localhost:3000/docs/validate-api) within to avoid operating with invalid values. If a value is invalid, an error will be thrown.
+
+<hr/>
+
+
+
+## cmykTo
+
+The **cmykTo** method convert an CMYK color to any of the 7 output formats.
+
+### Syntax 
+```js
+cmykToHex(color)
+
+cmykToHsl(color)
+
+cmykToHsv(color)
+
+cmykToLab(color)
+
+cmykToRgb(color)
+
+cmykToXyz(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Cmyk](/formats#cmyk) that contains number values in a certain interval (check [validate API](/validate-api#cmyk)).
+
+### Return value
+
+Depending on the target format, it can return an object of type [Hsl](/validate-api#hsl), [Hsv](/validate-api#hsv), [Lab](/validate-api#lab), [Rgb](/validate-api#rgb), or [Xyz](/validate-api#xyz), or a string of type [Hexadecimal](/validate-api#hexadecimal).
+
+### Examples
+
+```js
+const cmyk = { c: 69, m: 0, y: 42, k: 17 }
+
+cmykToHex(cmyk) // Expected output: '#42D37A'
+
+cmykToHsl(cmyk) // Expected output: { h: 143, s: 62, l: 54 }
+
+cmykToHsv(cmyk) // Expected output: { h: 143, s: 69, v: 83 }
+
+cmykToLab(cmyk) // Expected output: { l: 76, a: -58, b: 33 }
+
+cmykToRgb(cmyk) // Expected output: { r: 66, g: 211, b: 122 }
+
+cmykToXyz(cmyk) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## hexTo
+
+The **hexTo** method convert a hexadecimal color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#hexadecimal) for Hexadecimal colors.
+
+### Syntax 
+```js
+hexToCmyk(color)
+
+hexToHsl(color)
+
+hexToHsv(color)
+
+hexToLab(color)
+
+hexToRgb(color)
+
+hexToXyz(color)
+```
+
+### Parameters
+
+**_color:_** A string with a hash symbol (#) as first character.
+
+### Return value
+
+Depending on the target format, it can return an object of type [Cmyk](/validate-api#cmyk), [Hsl](/validate-api#hsl), [Hsv](/validate-api#hsv), [Lab](/validate-api#lab), [Rgb](/validate-api#rgb), or [Xyz](/validate-api#xyz).
+
+### Examples
+
+```js
+const hex = '#42D37A'
+
+hexToCmyk(hex) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+hexToHsl(hex) // Expected output: { h: 143, s: 62, l: 54 }
+
+hexToHsv(hex) // Expected output: { h: 143, s: 69, v: 83 }
+
+hexToLab(hex) // Expected output: { l: 76, a: -58, b: 33 }
+
+hexToRgb(hex) // Expected output: { r: 66, g: 211, b: 122 }
+
+hexToXyz(hex) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## hslTo
+
+The **hslTo** method convert an Hsl color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#hsl) for HSL colors.
+
+```js
+hslToHex(color)
+
+hslToCmyk(color)
+
+hslToHsv(color)
+
+hslToLab(color)
+
+hslToRgb(color)
+
+hslToXyz(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsl](/formats#hsl) that contains number values in a certain interval (check [validate API](/validate-api#hsl)).
+
+### Return value
+
+Depending on the target format, it can return an object of type [Cmyk](/validate-api#cmyk), [Hsv](/validate-api#hsv), [Lab](/validate-api#lab), [Rgb](/validate-api#rgb), or [Xyz](/validate-api#xyz), or a string of type [Hexadecimal](/validate-api#hexadecimal).
+
+### Examples
+
+```js
+const hsl = { h: 143, s: 62, l: 54 }
+
+hslToHex(hsl) // Expected output: '#42D37A'
+
+hslToCmyk(hsl) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+hslToHsv(hsl) // Expected output: { h: 143, s: 69, v: 83 }
+
+hslToLab(hsl) // Expected output: { l: 76, a: -58, b: 33 }
+
+hslToRgb(hsl) // Expected output: { r: 66, g: 211, b: 122 }
+
+hslToXyz(hsl) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## hsvTo
+
+The **hsvTo** method convert an Hsv color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#hsv) for HSV colors.
+
+```js
+hsvToHex(color)
+
+hsvToCmyk(color)
+
+hsvToHsl(color)
+
+hsvToLab(color)
+
+hsvToRgb(color)
+
+hsvToXyz(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsv](/formats#hsv) that contains number values in a certain interval (check [validate API](/validate-api#hsv)).
+
+### Return value
+
+Depending on the target format, it can return an object of type [Cmyk](/validate-api#cmyk), [Hsl](/validate-api#hsl), [Lab](/validate-api#lab), [Rgb](/validate-api#rgb), or [Xyz](/validate-api#xyz), or a string of type [Hexadecimal](/validate-api#hexadecimal).
+
+### Examples
+
+```js
+const hsv = { h: 143, s: 69, v: 83 }
+
+hsvToHex(hsv) // Expected output: '#42D37A'
+
+hsvToCmyk(hsv) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+hsvToHsl(hsv) // Expected output: { h: 143, s: 62, l: 54 }
+
+hsvToLab(hsv) // Expected output: { l: 76, a: -58, b: 33 }
+
+hsvToRgb(hsv) // Expected output: { r: 66, g: 211, b: 122 }
+
+hsvToXyz(hsv) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## rgbTo
+
+The **rgbTo** method convert an Rgb color to any of the 7 output formats. It receive the corresponding [format](http://localhost:3000/docs/formats#rgb) for HSL colors.
+
+```js
+rgbToHex(color)
+
+rgbToCmyk(color)
+
+rgbToHsl(color)
+
+rgbToHsv(color)
+
+rgbToLab(color)
+
+rgbToXyz(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Rgb](/formats#rgb) that contains number values in a certain interval (check [validate API](/validate-api#rgb)).
+
+### Return value
+
+Depending on the target format, it can return an object of type [Cmyk](/validate-api#cmyk), [Hsl](/validate-api#hsl), [Hsv](/validate-api#hsv), [Lab](/validate-api#lab), or [Xyz](/validate-api#xyz), or a string of type [Hexadecimal](/validate-api#hexadecimal).
+
+### Examples
+
+```js
+const rgb = { r: 66, g: 211, b: 122 }
+
+rgbToHex(rgb) // Expected output: '#42D37A'
+
+rgbToCmyk(rgb) // Expected output: { c: 69, m: 0, y: 42, k: 17 }
+
+rgbToHsl(rgb) // Expected output: { h: 143, s: 62, l: 54 }
+
+rgbToHsv(rgb) // Expected output: { h: 143, s: 69, v: 83 }
+
+rgbToLab(rgb) // Expected output: { l: 76, a: -58, b: 33 }
+
+rgbToXyz(rgb) // Expected output: { x: 29, y: 49.15, z: 26.36 }
+```
+
+<hr/>
+
+
+
+## colorFormatConverter
+
+The **colorFormatConverter** method can take a color of any of the 5 input formats and convert it to any of the 7 input formats.
+
+```js
+colorFormatConverter(color, options)
+```
+
+### Parameters
+
+**_color:_** An object of type [Cmyk](/formats#cmyk), [Hsl](/formats#hsl), [Hsv](/formats#hsv), or [Rgb](/formats#rgb), or a string type [Hex](/formats#hex).
+
+**_options:_** An object with 4 optional options.
+
+- **_currentFormat:_** A string can be one of the input formats (cmyk, hex, hsl, hsl, or rgb). If no format is sent, it will be identified.
+- **_targetFormat:_** An array of strings, it can only contain values of the output formats (cmyk, hex, hsl, hsv, lab, rgb and xyz).
+- **_allFormats:_** A boolean value to determine whether to return the color in every format or only the format specified in the targetFormat option..
+- **_identifyFormat:_** A boolean value to determine wheter to identified format or take the **currentFormat** option value.
+
+### Return value
+
+Returns an object of type [ColorFormats](/docs/colors#colorformats). Depending on the options **targetFormat** and **allFormats**, the object can contain every output format or just some of them.
+
+### Examples 
+
+```js
+colorFormatConverter('#42D37A', {
+  currentFormat: 'hex',
+  targetFormat: ['rgb']
+})
+// Expected output: { rgb: { r: 66, g: 211, b: 122 } }
+
+colorFormatConverter({ h: 143, s: 69, v: 83 }, {
+  currentFormat: 'hsv',
+  targetFormat: ['hex, cmyk']
+})
+// Expected output: {
+// cmyk: { c: 69, m: 0, y: 42, k: 17 }, 
+// hex: '#42D37A'
+// }
+
+colorFormatConverter({ r: 66, g: 211, b: 122 }, {
+  identifyFormat: true,
+  allFormats: true
+})
+// Expected output: {
+// cmyk: { c: 69, m: 0, y: 42, k: 17 }, 
+// hex: '#42D37A',
+// hsl: { h: 143, s: 62, l: 54 },
+// hsv: { h: 143, s: 69, v: 83 },
+// lab: { l: 76, a: -58, b: 33 },
+// xyz: { x: 29, y: 49.15, z: 26.36 }
+// }
+```

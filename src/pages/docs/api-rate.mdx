@@ -1,0 +1,44 @@
+---
+layout: ../../layouts/Page.astro
+title: Rate
+category: API
+---
+
+The rate API rates colors based on certain properties and features.
+
+## rateContrast
+
+The **rateContrast** method calculates the contrast ratio of two colors based on [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html). It also returns whether the contrast ratio passes or fails the WCAG criteria for levels **AA** and **AAA**.
+
+### Syntax 
+
+```js
+rateContrast(colors)
+```
+
+### Parameters
+
+**_colors:_** A string of objects of type [Rgb](/docs/formats#rgb). It has to have 2 colors.
+
+### Return value
+
+An object of type [WCAGContrast](/docs/wcag#wcagcontrast), with all the needed info to know about contrast guidelines.
+
+### Examples
+
+```js
+rateContrast(['#002719', '#c49c1a'])
+// Expected output: {
+  contrastValue: 6.2,
+  AA: {
+    smallText: true,
+    largeText: true,
+    uiComponent: true
+  },
+  AAA: {
+    smallText: false,
+    largeText: true,
+    uiComponent: true
+  }
+}
+```

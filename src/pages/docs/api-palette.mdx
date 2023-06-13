@@ -1,0 +1,289 @@
+---
+layout: ../../layouts/Page.astro
+title: Palette
+category: API
+---
+
+The Palette API can generate a color palettes of many different types.
+
+## makeAnalogousPalette
+
+The **makeAnalogousPalette** method makes an analogous color palette of **x** colors. Analogous colors are colors that are next to each other on the color wheel. The distance between the colors can vary depending on the desired result.
+
+### Syntax
+
+```js
+makeAnalogousPalette(color)
+
+makeAnalogousPalette(color, quantity)
+
+makeAnalogousPalette(color, quantity, variation)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
+**_variation:_** A number indicating the distance of the colors on the color wheel. The **default** value is 30.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make an analogous color palette.
+
+### Examples
+
+```js
+makeAnalogousPalette('#3e7a72', 5)
+// Expected output: ['#3e7a72', '#3e647a', '#3d457a', '#543e7a', '#723e7a']
+
+makeAnalogousPalette('#db490f', 4, 100)
+// Expected output: ['#db490f', '#80db0f', '#0fc5dd', '#0f5ddb']
+```
+
+<hr/>
+
+
+
+## makeComplementaryPalette
+
+The **makeComplementaryPalette** method makes a complementary color palette of 2 colors. Complementary colors are colors that are opposites on the color wheel. 
+
+### Syntax
+
+```js
+makeComplementaryPalette(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a complementary color palette of 2 colors.
+
+### Examples
+
+```js
+makeComplementaryPalette('#aeb508')
+// Expected output: ['#aeb508', '#0d08b5']
+```
+
+<hr/>
+
+
+
+## makeMonochromaticPalette
+
+The **makeMonochromaticPalette** method makes a monochromatic color palette of **x** colors. A monochromatic palette is a set of colors that start with a base color. The following colors are variations of that base color, created by changing the lightness of it.
+
+### Syntax
+
+```js
+makeMonochromaticPalette(color)
+
+makeMonochromaticPalette(color, quantity)
+
+makeMonochromaticPalette(color, quantity, variation)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
+**_variation:_** A number indicating the variation of lightness of the previous color. The **default** value is 20.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a monochromatic color palette of **x** colors.
+
+### Examples
+
+```js
+makeMonochromaticPalette({ r: 35, g: 0, b: 7 })
+// Expected output: [{ r: 35, g: 0, b: 7 }, { r: 55, g: 15, b: 27 }, { r: 75, g: 35, b: 47 }]
+
+makeMonochromaticPalette({ r: 2, g: 69, b: 0 }, 2)
+// Expected output: [{ r: 2, g: 69, b: 0 }, { r: 22, g: 89, b: 12 }]
+
+makeMonochromaticPalette({ r: 105, g: 71, b: 162 }, 3, 40)
+// Expected output: [{ r: 105, g: 71, b: 162 }, { r: 125, g: 91, b: 182 }, { r: 165, g: 131, b: 222 }]
+```
+
+<hr/>
+
+
+
+## makeSplitComplementaryPalette
+
+The **makeSplitComplementaryPalette** method makes a split complementary color palette. A split complementary color palette is a complementary palette adding colors that are at the middle of the distance of the 2 main colors.
+
+### Syntax
+
+```js
+makeSplitComplementaryPalette(color)
+
+makeSplitComplementaryPalette(color, quantity)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of **x** colors.
+
+### Examples
+
+```js
+makeSplitComplementaryPalette('#166460')
+// Expected output: ['#166460', '#641641, '#643916']
+
+makeSplitComplementaryPalette('#5c653d', 4)
+// Expected output: ['#5c653d', '#3d4866', '#5b3d66', '#3d3e66']
+```
+
+<hr/>
+
+
+
+## makeSquarePalette
+
+The **makeSquarePalette** method makes a square color palette of 4 colors. A square palette is a selection of colors on the color wheel that, when joined, form a square.
+
+### Syntax
+
+```js
+makeSquarePalette(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+
+### Examples
+
+```js
+makeSquarePalette('#c1ea8c')
+// Expected output: ['#c1ea8c', '#8beae3, '#b48bea', '#ea8b91']
+```
+
+<hr/>
+
+
+
+## makeTetradicPalette
+
+The **makeTetradicPalette** method makes a tetradic color palette of 4 colors. A tetradic palette is a set of 4 colors that are evenly spaced around the color wheel.
+
+### Syntax
+
+```js
+makeTetradicPalette(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+
+### Examples
+
+```js
+makeTetradicPalette('#ff5387')
+// Expected output: ['#ff5387', '#ff7654, '#43cca3', '#225866']
+```
+
+<hr/>
+
+
+
+## makeTriadicPalette
+
+The **makeTriadicPalette** method makes a triadic color palette of 3 colors. A triadic palette is a selection of colors on the color wheel that, when joined, form a triangle.
+
+### Syntax
+
+```js
+makeTriadicPalette(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+
+### Examples
+
+```js
+makeTriadicPalette('#6248cc')
+// Expected output: ['#6248cc', '#cb6248, '#48cb62']
+```
+
+<hr/>
+
+
+
+## makeColorPalette
+
+The **makeColorPalette** method makes a color palette of any of the previous palette types.
+
+### Syntax
+
+```js
+makeColorPalette(options)
+```
+
+### Parameters
+
+**_options:_** An object with 2 obligatory option and 4 optional options.
+
+- **_paletteType (obligatory):_** A string of type [Palette](/docs/colors#palette) to select the type of color palette you want.
+- **_format (obligatory):_** A string, it can only contain a value of the input formats (cmyk, hex, hsl, hsv or rgb).
+- **_randomColor (optional):_** A boolean value to determine whether to create a random color to use as the base color.
+- **_color (optional):_** A color of type [BaseColor](/docs/colors#basecolor) to use as base color, it should match the selected **format**.
+- **_quantity (optional):_** A number, if the palette type you select receive a quantity to create a certain number of colors, you can send a value.
+- **_variation (optional):_** A number, if the palette type you select receive a variarion to modify the result, you can send a value.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette.
+
+### Examples
+
+```js
+makeColorPalette({
+  paletteType: 'monochromatic',
+  format: 'hex',
+  randomColor: true
+})
+// Expected output: ['#02001d', '#2a1245, '#523a6d']
+
+makeColorPalette({
+  paletteType: 'complementary',
+  format: 'rgb',
+  color: { r: 159, g: 136, b: 255 }
+})
+// Expected output: [{ r: 159, g: 136, b: 255 }, { r: 232, g: 255, b: 138 }]
+
+makeColorPalette({
+  paletteType: 'analogous',
+  format: 'hex',
+  color: '#b5eb8e',
+  quantity: 5,
+  variarion: 50
+})
+// Expected output: ['#b5eb8e', '#8eebb5', '#8ed4eb', '#8ea5eb', '#c48eeb']
+```

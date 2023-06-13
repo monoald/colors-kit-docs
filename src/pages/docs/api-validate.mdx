@@ -1,0 +1,283 @@
+---
+layout: ../../layouts/Page.astro
+title: Validate
+category: API
+---
+
+The Validate API helps validate colors. It ensures that colors have the correct value within the range of their current format. If a value is not within the correct range, the method will throw an error. You can validate six different formats, like:
+
+- CMYK
+- Hexadecimal
+- HSL
+- HSV
+- LAB
+- RGB
+
+<hr/>
+
+
+
+## validateCmyk
+
+The **validateCmyk** method validate a CMYK color. Its values for cyan (c), magenta (m), yellow (y), and black (k) should be a **number** between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateCmyk(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Cmyk](/formats#cmyk) that contains number values in a certain interval (check [validate API](/validate-api#cmyk)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateCmyk({ c: 69, m: 0, y: 42, k: 17 }) // Valid
+
+validateCmyk({ c: 69, m: 0, y: 20 })
+// Expected output: "Error: Expected property key (k) to be of type number, but got undefined."
+
+validateCmyk({ c: 69, m: 'Hi!', y: 20, k: 45 })
+// Expected output: "Error: Expected property key (k) to be of type number, but got string."
+
+validateCmyk({ c: 690, m: 0, y: 42, k: 17 })
+// Expected output: "Error: The cyan (c) value is not valid. Cyan value must be between 0 and 100."
+
+validateCmyk({ c: 69, m: 0, y: -2, k: 10 })
+// Expected output: "Error: The yellow (y) value is not valid. Yellow value must be between 0 and 100."
+```
+
+<hr/>
+
+
+
+## validateHex
+
+The **validateHex** method validate a hexadecimal color. A hexadecimal color must always start with the "#" symbol. It can have either 3 or 6 digits. Each digit must be between 0 and 15, which means it can be a number from 0 to 9 or a letter from A to F. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateHex(color)
+```
+
+### Parameters
+
+**_color:_** A string with a hash symbol (#) as first character.
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateHex("#45AA0F") // Valid
+
+validateHex("#4AF") // Valid
+
+validateHex("45AAF4")
+// Expected output: "Error: A hash symbol (#) must be present at the begining of the color."
+
+validateHex("#45AAr4")
+// Expected output: "Error: A Hexadecimal color should have numbers between 0-9 and letter between a-f."
+
+validateHex("#45aar4")
+// Expected output: "Error: Values are not valid. Cmyk only accept values from 0 to 100"
+
+validateHex("#4C64")
+// Expected output: "Error: A Hexadecimal color should have 6 or 3 digits."
+
+validateHex("#E4")
+// Expected output: "Error: A Hexadecimal color should have 6 or 3 digits."
+```
+
+<hr/>
+
+
+
+## validateHsl
+
+The **validateHsl** method validates an HSL color. The hue (h) value must be between 0 and 360, and the saturation (s) and lightness (l) values must be between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateHsl(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsl](/formats#hsl) that contains number values in a certain interval (check [validate API](/validate-api#hsl)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateHsl({ h: 143, s: 62, l: 54 }) // Valid
+
+validateHsl({ s: 62, l: 54 })
+// Expected output: "Error: Expected property hue (h) to be of type number, but got undefined."
+
+validateHsl({ h: 143, s: false, l: 54 })
+// Expected output: "Error: Expected property saturation (s) to be of type number, but got boolean."
+
+validateHsl({ h: 143, s: 62, l: 540 })
+// Expected output: "Error: The lightness (l) value is not valid. Lightness value must be between 0 and 100."
+
+validateHsl({ h: -50, s: 62, l: 54 })
+// Expected output: "Error: The hue (h) value is not valid. Hue value must be between 0 and 360."
+```
+
+<hr/>
+
+
+
+## validateHsv
+
+The **validateHsv** method validates an HSV color. The hue (h) value must be between 0 and 360, and the saturation (s) and brightness (v) values must be between 0 and 100. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateHsv(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Hsv](/formats#hsv) that contains number values in a certain interval (check [validate API](/validate-api#hsv)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateHsv({ h: 143, s: 62, l: 54 }) // Valid
+
+validateHsv({ s: 62, v: 54 })
+// Expected output: "Error: Expected property hue (h) to be of type number, but got undefined."
+
+validateHsv({ h: 143, s: false, v: 54 })
+// Expected output: "Error: Expected property saturation (s) to be of type number, but got boolean."
+
+validateHsv({ h: 143, s: 62, v: 540 })
+// Expected output: "Error: The brightness (b) value is not valid. Brightness value must be between 0 and 100."
+
+validateHsv({ h: -50, s: 62, v: 54 })
+// Expected output: "Error: The hue (h) value is not valid. Hue value must be between 0 and 360."
+```
+
+<hr/>
+
+
+
+## validateLab
+
+The **validateLab** method validates a LAB color. The lightness (l) value must be between 0 and 100, and the a and b values must be between -128 and 127. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateLab(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Lab](/formats#lab) that contains number values in a certain interval (check [validate API](/validate-api#lab)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateLab({ l: 76, a: -58, b: 33 }) // Valid
+
+validateLab({ l: 76, b: 33 })
+// Expected output: "Error: Expected property a to be of type number, but got undefined."
+
+validateLab({ l: 76, a: -58, b: "lab" })
+// Expected output: "Error: Expected property b to be of type number, but got string."
+
+validateLab({ l: -76, a: -58, b: 33 })
+// Expected output: "Error: The lightness (l) value is not valid. Lightness value must be between 0 and 100."
+
+validateLab({ l: 76, a: -58, b: 333 })
+// Expected output: "Error: The b value is not valid. B value must be between -128 and 127."
+```
+
+<hr/>
+
+
+
+## validateRgb
+
+The **validateRgb** method validates an RGB color. Its values for red (r), green (g) and blue (b) should be a **number** between 0 and 255. If any of the values are outside the allowed range, are not of type number, or are not sent, an error will be thrown.
+
+### Syntax
+
+```js
+validateRgb(color)
+```
+
+### Parameters
+
+**_color:_** An object of type [Rgb](/formats#rgb) that contains number values in a certain interval (check [validate API](/validate-api#rgb)).
+
+### Return value
+
+This method does not return a value.
+
+If the color is invalid, an error will be thrown.
+
+If the color is valid, the code will continue to execute.
+
+### Examples
+
+```js
+validateRgb({ r: 66, g: 211, b: 122 }) // Valid
+
+validateRgb({ g: 211, b: 122 })
+// Expected output: "Error: Expected property red (r) to be of type number, but got undefined."
+
+validateRgb({ r: 66, g: true, b: 122 })
+// Expected output: "Error: Expected property green (g) to be of type number, but got boolean."
+
+validateRgb({ r: 66, g: 211, b: 422 })
+// Expected output: "Error: The blue (b) value is not valid. Blue value must be between 0 and 255."
+
+validateRgb({ r: -66, g: 211, b: 122 })
+// Expected output: "Error: The red (r) value is not valid. Red value must be between 0 and 255."
+```

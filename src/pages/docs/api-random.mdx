@@ -1,0 +1,234 @@
+---
+layout: ../../layouts/Page.astro
+title: Random
+category: API
+---
+
+The Random API can create a random color in any of the seven [formats](/docs/formats).
+
+
+## getRandomCmyk
+
+The **getRandomCmyk** method creates a random CMYK color.
+
+### Syntax
+
+```js
+getRandomCmyk()
+```
+
+### Return value
+
+A color of type [Cmyk](/docs/formats#cmyk).
+
+### Examples
+
+```js
+getRandomCmyk() // Expected output: { c: 23, m: 53, y: 100, k: 85 }
+
+getRandomCmyk() // Expected output: { c: 0, m: 77, y: 80, k: 8 }
+```
+
+<hr/>
+
+
+
+## getRandomHex
+
+The **getRandomHex** method creates a random Hexadecimal color.
+
+### Syntax
+
+```js
+getRandomHex()
+```
+
+### Return value
+
+A color of type [Hex](/docs/formats#hex).
+
+### Examples
+
+```js
+getRandomHex() // Expected output: '#45da21'
+
+getRandomHex() // Expected output: '#e2449a'
+```
+
+<hr/>
+
+
+
+## getRandomHsl
+
+The **getRandomHsl** method creates a random HSL color.
+
+### Syntax
+
+```js
+getRandomHsl()
+```
+
+### Return value
+
+A color of type [Hsl](/docs/formats#hsl).
+
+### Examples
+
+```js
+getRandomHsl() // Expected output: { h: 145, s: 90, l: 66 }
+
+getRandomHsl() // Expected output: { h: 355, s: 82, l: 90 }
+```
+
+<hr/>
+
+
+
+## getRandomHsv
+
+The **getRandomHsv** method creates a random HSV color.
+
+### Syntax
+
+```js
+getRandomHsv()
+```
+
+### Return value
+
+A color of type [Hsv](/docs/formats#hsv).
+
+### Examples
+
+```js
+getRandomHsv() // Expected output: { h: 6, s: 33, v: 58 }
+
+getRandomHsv() // Expected output: { h: 284, s: 100, v: 13 }
+```
+
+<hr/>
+
+
+
+## getRandomLab
+
+The **getRandomLab** method creates a random LAB color.
+
+### Syntax
+
+```js
+getRandomLab()
+```
+
+### Return value
+
+A color of type [Lab](/docs/formats#lab).
+
+### Examples
+
+```js
+getRandomLab() // Expected output: { l: 45, a: -81, b: 67 }
+
+getRandomLab() // Expected output: { l: 45, a: 34, b: 174 }
+```
+
+<hr/>
+
+
+
+## getRandomRgb
+
+The **getRandomRgb** method creates a random RGB color.
+
+### Syntax
+
+```js
+getRandomRgb()
+```
+
+### Return value
+
+A color of type [Rgb](/docs/formats#rgb).
+
+### Examples
+
+```js
+getRandomRgb() // Expected output: { r: 48, g: 212 b: 25 }
+
+getRandomRgb() // Expected output: { r: 96, g: 58, b: 135 }
+```
+
+<hr/>
+
+
+
+## getRandomXyz
+
+The **getRandomXyz** method creates a random XYZ color.
+
+### Syntax
+
+```js
+getRandomXyz()
+```
+
+### Return value
+
+A color of type [Xyz](/docs/formats#xyz).
+
+### Examples
+
+```js
+getRandomXyz() // Expected output: { x: 34, y: 0, z: 67 }
+
+getRandomXyz() // Expected output: { x: 64, y: 23, z: 5 }
+```
+
+<hr/>
+
+
+
+## getRandomColor
+
+The **getRandomColor** method creates a random color in any of the seven [formats](/docs/formats).
+
+### Syntax
+
+```js
+getRandomColor(options)
+```
+
+### Parameters
+
+**_options:_** An object with 2 optional options.
+
+- **_formats:_** An array of strings, it can only contain values of the output formats (cmyk, hex, hsl, hsv, lab, rgb and xyz).
+- **_allFormats:_** A boolean value to determine whether to return a random color in every format or only the formats specified in the targetFormat option.
+
+### Return value
+
+Returns an object of type [ColorFormats](/docs/colors#colorformats) with a random color in many or a single format.
+
+### Examples
+
+```js
+getRandomColor({ formats: ['hex']}) // Expected output: { hex: '#f433a4' }
+
+getRandomColor({ formats: ['cmyk', 'hsl'] })
+// Expected output: {
+//  cmyk: { c: 0, m: 42, y: 42, k: 6 }
+//  hsl: { h: 0, s: 76, l: 74 }
+// }
+
+getRandomColor({ allFormats: true })
+// Expected output: {
+//  cmyk: { c: 69, m: 48, y: 0, k: 62 },
+//  hex: '#1E3362',
+//  hsl: { h: 221, s: 53, l: 25 },
+//  hsv: { h: 221, s: 69, l: 38 },
+//  rgb: { r: 30, g: 51, b: 98 },
+//  lab: { l: 22, a: 9, b: -30 }
+//  xyz: { x: 3.9, y: 3.5, z: 12 }
+// }
+```

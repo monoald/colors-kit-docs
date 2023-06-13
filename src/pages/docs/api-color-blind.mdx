@@ -1,0 +1,274 @@
+---
+layout: ../../layouts/Page.astro
+title: Color Blind
+category: API
+---
+
+The Color Blind API can simulate different types of color blindness.
+
+## toAchromatomaly
+
+The **toAchromatomaly** method simulates achromatomaly for a color.
+
+### Syntax
+
+```js
+toAchromatomaly(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating achromatomaly.
+
+### Examples
+
+```js
+toAchromatomaly('#42D37A') // Expected output: '#73b58d'
+
+toAchromatomaly({ r: 45, g: 75, b: 200 }) // Expected output: { r: 64, g: 77, b: 134 }
+```
+
+<hr/>
+
+
+
+## toAchromatopsia
+
+The **toAchromatopsia** method simulates achromatopsia for a color.
+
+### Syntax
+
+```js
+toAchromatopsia(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating achromatopsia.
+
+### Examples
+
+```js
+toAchromatopsia('#42D37A') // Expected output: '#858585'
+
+toAchromatopsia({ r: 45, g: 75, b: 200 }) // Expected output: { r: 107, g: 107, b: 107 }
+```
+
+<hr/>
+
+
+
+## toDeuteranomaly
+
+The **toDeuteranomaly** method simulates deuteranomaly for a color.
+
+### Syntax
+
+```js
+toDeuteranomaly(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating deuteranomaly.
+
+### Examples
+
+```js
+toDeuteranomaly('#42D37A') // Expected output: '#5fad86'
+
+toDeuteranomaly({ r: 45, g: 75, b: 200 }) // Expected output: { r: 51, g: 67, b: 182 }
+```
+
+<hr/>
+
+
+
+## toDeuteranopia
+
+The **toDeuteranopia** method simulates deuteranopia for a color.
+
+### Syntax
+
+```js
+toDeuteranopia(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating deuteranopia.
+
+### Examples
+
+```js
+toDeuteranopia('#42D37A') // Expected output: '#786d94'
+
+toDeuteranopia({ r: 45, g: 75, b: 200 }) // Expected output: { r: 54, g: 54, b: 162 }
+```
+
+<hr/>
+
+
+
+## toProtanomaly
+
+The **toProtanomaly** method simulates protanomaly for a color.
+
+### Syntax
+
+```js
+toProtanomaly(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating protanomaly.
+
+### Examples
+
+```js
+toProtanomaly('#42D37A') // Expected output: '#5ca285'
+
+toProtanomaly({ r: 45, g: 75, b: 200 }) // Expected output: { r: 50, g: 65, b: 184 }
+```
+
+<hr/>
+
+
+
+## toProtanopia
+
+The **toProtanopia** method simulates protanopia for a color.
+
+### Syntax
+
+```js
+toProtanopia(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating protanopia.
+
+### Examples
+
+```js
+toProtanopia('#42D37A') // Expected output: '#808290'
+
+toProtanopia({ r: 45, g: 75, b: 200 }) // Expected output: { r: 57, g: 58, b: 170 }
+```
+
+<hr/>
+
+
+
+## toTritanomaly
+
+The **toTritanomaly** method simulates tritanomaly for a color.
+
+### Syntax
+
+```js
+toTritanomaly(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating tritanomaly.
+
+### Examples
+
+```js
+toTritanomaly('#42D37A') // Expected output: '#47bb8a'
+
+toTritanomaly({ r: 45, g: 75, b: 200 }) // Expected output: { r: 46, g: 108, b: 177 }
+```
+
+<hr/>
+
+
+
+## toTritanopia
+
+The **toTritanopia** method simulates tritanopia for a color.
+
+### Syntax
+
+```js
+toTritanopia(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating tritanopia.
+
+### Examples
+
+```js
+toTritanopia('#42D37A') // Expected output: '#49a0ac'
+
+toTritanopia({ r: 45, g: 75, b: 200 }) // Expected output: { r: 47, g: 145, b: 129 }
+```
+
+<hr/>
+
+
+
+## toColorBlind
+
+The **toColorBlind** method simulates any color blindness type for a color.
+
+### Syntax
+
+```js
+toColorBlind(color)
+```
+
+### Parameters
+
+**_color:_** A color of type [BaseColor](/docs/colors#basecolor), The method will identify the correct format to operate.
+**_colorBlindness:_** A string of type [ColorBlindness](/docs/colors#colorblindeness).
+
+### Return value
+
+A color of type [BaseColor](/docs/colors#basecolor) simulating the selected type of color blindness.
+
+### Examples
+
+```js
+toColorBlind('#f4fa53', 'tritanopia') // Expected output: '#f49bb2'
+
+toColorBlind({ r: 195, g: 144, b: 244 }, 'deuteranopia') // Expected output: { r: 175, g: 179, b: 213 }
+```
