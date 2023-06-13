@@ -1,0 +1,41 @@
+---
+layout: ../../layouts/Page.astro
+title: Others
+category: TypeScript
+---
+
+The following types helps to select a specific value for a string when sending **parameters** to some methods of the "@colors-js" set of packages.
+
+## ColorBlindness
+
+This type determines whether a string value is "achromatomaly", "achromatopsia", "deuteranomaly", "deuteranopia", "protanomaly", "protanopia", "tritanomaly" or "tritanopia".
+
+### Type
+
+The value is a determined string between different options.
+
+```js
+type ColorBlindness = 'achromatomaly' | 'achromatopsia' | 'deuteranomaly' | 'deuteranopia' | 'protanomaly' | 'protanopia' | 'tritanomaly' | 'tritanopia'
+
+// Examples
+const ColorBlindness: ColorBlindness = 'protanomaly'
+```
+
+<hr/>
+
+
+
+## Palette
+
+This type determines whether a string value is "analogous", "complementary", "monochromatic", "split-complementary", "square", "tetradic" or "triadic".
+
+### Type
+
+The value is a determined string between different options.
+
+```js
+type Palette = 'analogous' | 'complementary' | 'monochromatic' | 'split-complementary' | 'square' | 'tetradic' | 'triadic'
+
+// Examples
+const palette: Palette = 'square'
+```

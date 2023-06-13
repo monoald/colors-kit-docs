@@ -1,0 +1,164 @@
+---
+layout: ../../layouts/Page.astro
+title: Formats
+category: TypeScript
+---
+
+This set of packages works with seven different formats. Each format requires a specific TypeScript type or interface to operate with. 
+
+## CMYK
+
+CMYK stands for cyan, magenta, yellow, and black. It is a subtractive color model, which means that colors are created by subtracting light from white. CMYK is used to create a wider range of colors than can be achieved with RGB, which is an additive color model. 
+It is used in most commercial printing applications, such as magazines, books, and newspapers. It is also used in some digital printing applications, such as large format printing and photo printing.
+
+### Type
+
+As its name stands for every value that represent the format, to work with CMYK colors on this package you should use an Object wich stores number values for c (cyan), m (magenta), y (yellow) and k (key).
+
+```js
+interface Cmyk {
+  c: number
+  m: number
+  y: number
+  k: number
+}
+
+// Example
+const color: Cmyk = { c: 69, m: 0, y: 42, k: 17 }
+```
+
+<hr/>
+
+
+
+## HEXADECIMAL
+
+How does hexadecimal color work?
+Hexadecimal color uses two hexadecimal digits to represent each of the three primary colors: red, green, and blue. Each hexadecimal digit can range from 0 to 9 or from A to F, which corresponds to the decimal values of 0 to 15. This gives a total of 256 possible values for each primary color, which can be combined to create millions of different colors. It is a popular format for representing colors in web development and other software applications such as graphic design, photography and more.
+
+### Type
+
+There are two ways to work with hexadecimal colors on this package, the first has 6 digits that every 2 digits represent a value for the red, green and blue colors, the second one has only 3 digits where each digit repeats itself to complete the value for red, green and blue. Both have the '#' symbol at the begining of the color.
+
+```js
+type Hex = string
+
+// Examples
+const color: Hex = '#42D37A' 
+const color: Hex = '#54f' // Equal to '#5544ff'
+```
+
+<hr/>
+
+
+
+## HSL
+
+HSL stands for hue, saturation, and lightness. It is a color model that describes colors based on these three properties. Hue is the color itself, saturation is how much white is mixed with the color, and lightness is how much black is mixed with the color. It is a popular format for representing colors in web development and other software applications such as graphic design, photography and user interface.
+
+### Type
+
+As its name stands for every value that represent the format, to work with HSL colors on this package you should use an Object wich stores number values for h (hue), s (saturation) and l (lightness).
+
+```js
+interface Hsl {
+  h: number
+  s: number
+  l: number
+}
+
+// Example
+const color: Hsl = { h: 143, s: 62, l: 54 }
+```
+
+<hr/>
+
+
+
+## HSV
+
+HSV stands for hue, saturation, and value. It is a color model that describes colors based on these three properties. Hue is the color itself, saturation is how much white is mixed with the color, and value is how much black is mixed with the color. It is a popular format for representing colors in web development and other software applications such as graphic design, photography and user interface.
+
+### Type
+
+As its name stands for every value that represent the format, to work with HSV colors on this package you should use an Object wich stores number values for h (hue), s (saturation) and v (value).
+
+```js
+interface Hsv {
+  h: number
+  s: number
+  v: number
+}
+
+// Example
+const color: Hsv = { h: 143, s: 69, v: 83 }
+```
+
+<hr/>
+
+
+
+## LAB
+
+LAB stands for lightness, a, and b. It is a color model that describes colors based on these three properties. Lightness is how bright or dark a color is, a measures how green or magenta a color is, and b measures how blue or yellow a color is. Is is a popular format for representing colors in image editing, printing and color management. It has no precise convertion to other color formats such as cmyk, hexadecimal, hsl, hsv, rgb, etc.
+
+### Type
+
+As its name stands for every value that represent the format, to work with LAB colors on this package you should use an Object wich stores number values for l (lightness), a and b.
+
+```js
+interface Lab {
+  l: number
+  a: number
+  b: number
+}
+
+// Example
+const color: Lab = { l: 76, a: -58, b: 33 }
+```
+
+<hr/>
+
+
+
+## RGB
+
+Give me a resume about the LAB color format, it should say about where it is used and give more general information. It is a popular format for representing colors in computer graphics, display graphics, photography, photography and more.
+
+### Type
+
+As its name stands for every value that represent the format, to work with RGB colors on this package you should use an Object wich stores number values for r (red), g (green) and b (blue).
+
+```js
+interface Rgb {
+  r: number
+  g: number
+  b: number
+}
+
+// Example
+const color: Rgb = { r: 66, g: 211, b: 122 }
+```
+
+<hr/>
+
+
+
+## XYZ
+
+XYZ stands for luminance, x, and y. It is a color model that describes colors based on these three properties. Luminance is how bright or dark a color is, x measures how red or green a color is, and y measures how blue or yellow a color is. It is a popular format for representing colors in colorimetry, color management and graphics.
+
+### Type
+
+As its name stands for every value that represent the format, to work with RGB colors on this package you should use an Object wich stores number values for x, y, z (luminance).
+
+```js
+interface Xyz {
+  x: number
+  y: number
+  z: number
+}
+
+// Example
+const color: Xyz = { x: 29, y: 49.15, z: 26.36 }
+```

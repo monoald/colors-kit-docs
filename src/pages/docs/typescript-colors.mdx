@@ -1,0 +1,82 @@
+---
+layout: ../../layouts/Page.astro
+title: Colors
+category: TypeScript
+---
+
+This set of packages works with different types of color aggregations. Each aggregation is needed to work specifically with TypeScript.
+
+## ColorFormats
+
+This interface can contain every format and can select a specific color format by its format name.
+
+### Type
+
+Each value should be as its interface or type specifies, read about [format](/formats) types to know more.
+
+```js
+interface ColorFormats {
+  cmyk?: Cmyk
+  hex?: Hex
+  hsl?: Hsl
+  hsv?: Hsv
+  lab?: Lab
+  rgb?: Rgb
+  xyz?: Xyz
+}
+
+// Examples
+const colors: ColorFormats = {
+  hex: '#42D37A',
+  rgb: { r: 66, g: 211, b: 122 }
+}
+
+const otherColors: ColorFormats = {
+  hsl: { h: 143, s: 62, l: 54 },
+  hsv: { h: 143, s: 69, v: 83 }
+}
+```
+
+<hr/>
+
+
+
+## BaseColor
+
+This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, or Rgb. The Lab and XYZ formats are excluded because they are imprecise when converting between types.
+
+### Type
+
+Each value should be as its interface or type specifies, read about [format](/formats) types to know more.
+
+```js
+type BaseColor = Cmyk | Hex | Hsl | Hsv | Rgb;
+
+// Examples
+const color: BaseColor = '#42D37A'
+
+const otherColor: BaseColor = { r: 66, g: 211, b: 122 };
+```
+
+<hr/>
+
+
+
+## AnyFormat
+
+This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, Lab, Rgb, or Xyz. This type is used in this set of packages as a return type cause it contains imprecise types like Lab and Xyz.
+
+### Type
+
+Each value should be as its interface or type specifies, read about [format](/formats) types to know more.
+
+```js
+type AnyFormat = Cmyk | Hex | Hsl | Hsv | Lab | Rgb | Xyz
+
+// Examples
+const color: AnyFormat = '#42D37A'
+
+const rgbColor: AnyFormat = { r: 66, g: 211, b: 122 }
+
+const labColor: AnyFormat = { l: 76, a: -58, b: 33 }
+```

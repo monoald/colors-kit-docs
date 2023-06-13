@@ -1,0 +1,68 @@
+---
+layout: ../../layouts/Page.astro
+title: WCAG
+category: TypeScript
+---
+
+This set of packages helps with some WCAG criteria for colors. The following interfaces and types will work for WCAG.
+
+## Level
+
+This interface stores values to indicate wheter the current contrast ration passes or fails the criterion for the AA and AAA levels of the Web Content Accessibility Guidelines (WCAG).
+
+### Type
+
+```js
+interface Level {
+  smallText: boolean
+  largeText: boolean
+  uiComponent: boolean
+}
+
+// Examples 
+// for colors #000000 and #ffffff
+const levelsRateAA: Level = {
+  smallText: true,
+  largeText: true,
+  uiComponent: true
+}
+
+// for colors #a2a8fa and #540d0d
+const levelsRateAAA: Level = {
+  smallText: false,
+  largeText: true,
+  uiComponent: true
+}
+```
+
+## WCAGContrast
+
+This interface is for more complete variables that contains all the information required to know about a contrast rate of the Web Content Accessibility Guidelines (WCAG).
+
+### Type
+
+It contains the contrast rate value and the information about if it passed the AA and AAA levels
+
+```js
+interface WCAGContrast {
+  contrastValue: number
+  AA: Level
+  AAA: Level
+}
+
+// Examples
+// for colors #faeda2 and #5f55f2
+const contrastInfo: WCAGContrast = {
+  contrastValue: 4.4,
+  AA: {
+    smallText: false,
+    largeText: true,
+    uiComponent: true
+  },
+  AAA: {
+    smallText: false,
+    largeText: false,
+    uiComponent: true
+  }
+}
+```
