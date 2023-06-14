@@ -16,7 +16,7 @@ const {
 <Base title={title} category={category} url={url ?? "/"}>
   <section
     aria-label="Main content"
-    class="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-inner space-y-4"
+    class="bg-content p-8 rounded-xl shadow-inner space-y-4 text-text-active"
   >
     <h1
       class={`font-bold ${
@@ -30,6 +30,7 @@ const {
 
     <article
       aria-label="Post"
+      id="article"
       class="dark:prose-invert max-w-none prose prose-p:leading-loose prose-li:leading-loose prose-headings:font-bold prose-headings:my-4"
     >
       <slot />
@@ -40,8 +41,9 @@ const {
       href={`https://github.com/ekqt/astrofordocs/blob/main/src/pages${
         url === "" ? "/index" : url
       }.mdx`}
-      class="pt-4 block no-underline text-slate-500 text-sm hover:text-slate-700 dark:text-slate-300 dark:hover:text-slate-100 transition-colors"
-    >Noticed something wrong? Edit this page 🙏🏼
+      class="pt-4 block no-underline text-text-active"
+    >
+      If you notice an error in the documentation, please edit the page to fix it.
     </a>
   </section>
 </Base>
@@ -52,5 +54,33 @@ const {
   }
   .prose pre {
     @apply p-5 drop-shadow-2xl;
+  }
+
+  #article {
+    @apply text-teal-50
+  }
+  #article strong,
+  #article a,
+  #article h2,
+  #article h3{
+    @apply text-text-active
+  }
+  #article pre::-webkit-scrollbar {
+    @apply w-6
+  }
+
+  /* Track */
+  #article pre::-webkit-scrollbar-track {
+    @apply bg-transparent
+  }
+
+  /* Handle */
+  #article pre::-webkit-scrollbar-thumb {
+    @apply bg-text-inactive rounded-xl border-[6px] border-[#0D1117] border-solid
+  }
+
+  /* Handle on hover */
+  #article pre::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-active border-[4px]
   }
 </style>

@@ -33,18 +33,18 @@ const { title, category, url } = Astro.props;
   <body>
     <div
       id="container"
-      class="grid min-h-screen max-w-6xl mx-auto transition-colors"
+      class="flex min-h-screen max-w-7xl mx-auto transition-colors md:px-12 lg:gap-[80px]"
     >
       <aside
         aria-label="Sidebar navigation"
         id="sidenav-open"
-        class="z-50 grid px-2 lg:px-6 lg:block grid-cols-[max-content_1fr] invisible target:visible lg:visible lg:translate-x-0 sticky top-0 max-h-screen -translate-x-full target:translate-x-0 transition-transform"
+        class="z-50 target:grid px-2 lg:px-0 lg:block grid-cols-[max-content_1fr] hidden absolute lg:translate-x-0 lg:sticky top-0 max-h-screen -translate-x-full target:translate-x-0 transition-transform lg:min-w-[140px] w-full lg:w-[140px] h-screen"
       >
         <Sidenav pages={pages} currentPath={url ?? ""} />
       </aside>
       <main
         aria-label="Main panel"
-        class="max-w-[95vw] py-6 px-2 lg:px-6 mx-auto w-full"
+        class="max-w-[95vw] py-6 px-2 lg:px-0 mx-auto lg:w-[calc(100%-220px)]"
       >
         <Navbar items={navbarItems} />
         <slot />
@@ -55,12 +55,33 @@ const { title, category, url } = Astro.props;
     <style is:global>
       html,
       body {
-        @apply scroll-smooth bg-slate-50 text-slate-900 antialiased transition-colors dark:bg-slate-900 dark:text-slate-50;
+        @apply scroll-smooth antialiased transition-colors bg-main text-text-active;
       }
 
       /** Side Navigation */
       #container {
-        grid: [stack] 1fr / 1fr [stack] 4fr;
+        /* grid: 140px / 1fr [stack] 4fr; */
+        grid: [stack] 1fr / 140px 1fr;
+      }
+
+      /* width */
+      body::-webkit-scrollbar {
+        @apply w-6
+      }
+
+      /* Track */
+      body::-webkit-scrollbar-track {
+        @apply bg-transparent
+      }
+
+      /* Handle */
+      body::-webkit-scrollbar-thumb {
+        @apply bg-text-inactive rounded-xl border-[9px] border-main border-solid
+      }
+
+      /* Handle on hover */
+      body::-webkit-scrollbar-thumb:hover {
+        @apply bg-text-active border-[8px]
       }
 
       @media (max-width: 1024px) {

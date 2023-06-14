@@ -23,7 +23,7 @@ const categories = [
 ---
 
 <div
-  class="bg-slate-50 px-12 md:px-24 lg:px-0 py-32 shadow-inner lg:shadow-none transition-colors dark:bg-slate-900"
+  class="px-12 md:px-24 lg:px-0 py-8 lg:py-32 shadow-inner lg:shadow-none transition-colors bg-main w-full"
 >
   {
     categories.map((category) => (
@@ -42,11 +42,11 @@ const categories = [
             .map(({ frontmatter, url }) => (
               <li
                 aria-label={frontmatter.title}
-                class={`-ml-px border-l py-1 pl-4 text-slate-400 transition-all hover:border-slate-500 hover:text-slate-500 dark:hover:border-slate-200 dark:hover:text-slate-200
+                class={`-ml-px border-l py-1 pl-4 text-text-inactive transition-all hover:border-text-active  hover:text-text-active 
                   ${
                     currentPath === url
-                    ? "border-slate-600 font-semibold text-slate-800 dark:border-slate-50 dark:text-slate-50"
-                    : " border-transparent dark:border-slate-600"
+                    ? "font-semibold dark:border-text-active dark:text-text-active"
+                    : "dark:border-slate-600"
                   }
                 `}
               >
@@ -59,7 +59,7 @@ const categories = [
   }
 </div>
 <a
-  class="bg-black/20 backdrop-blur-sm select-none touch-manipulation lg:hidden"
+  class="bg-black/20 backdrop-blur-sm select-none touch-manipulation"
   href="#"
   id="sidenav-close"
   title="Close Menu"
