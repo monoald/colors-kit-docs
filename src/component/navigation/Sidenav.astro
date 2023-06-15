@@ -1,13 +1,14 @@
 ---
-import type { MDXInstance } from "astro";
+import type { MDXInstance, MarkdownHeading } from "astro";
 import type { DocsType } from "../../lib/types";
 
 type Props = {
   pages: Array<MDXInstance<DocsType>>;
   currentPath: string;
+  items: Array<MarkdownHeading>;
 };
 
-const { pages, currentPath } = Astro.props;
+const { pages, currentPath, items } = Astro.props;
 
 const filteredPages = pages.filter((p) => Boolean(p.frontmatter.category));
 
@@ -23,7 +24,7 @@ const categories = [
 ---
 
 <div
-  class="px-12 md:px-24 lg:px-0 py-8 lg:py-32 shadow-inner lg:shadow-none transition-colors bg-main w-full"
+  class="px-12 md:px-24 lg:px-0 pt-8 lg:pt-24 shadow-inner lg:shadow-none transition-colors bg-main w-full"
 >
   {
     categories.map((category) => (
@@ -33,25 +34,37 @@ const categories = [
         </h3>
         <ul
           aria-label={`Pages in ${category}`}
-          class="border-l text-lg lg:text-base"
+          class="text-lg lg:text-base"
         >
           {sortedPages
             .filter(
               ({ frontmatter }) => frontmatter.category === category
             )
             .map(({ frontmatter, url }) => (
-              <li
-                aria-label={frontmatter.title}
-                class={`-ml-px border-l py-1 pl-4 text-text-inactive transition-all hover:border-text-active  hover:text-text-active 
-                  ${
-                    currentPath === url
-                    ? "font-semibold dark:border-text-active dark:text-text-active"
-                    : "dark:border-slate-600"
+              <div class="border-l-0">
+                <li
+                  aria-label={frontmatter.title}
+                  class={`-ml-px py-1 pl-4 text-text-inactive transition-all hover:border-text-active  hover:text-text-active
+                    ${
+                      currentPath === url
+                      ? "border-l-[2px] font-semibold border-text-active border-solid dark:text-text-active" : ""
+                    }
+                  `}
+                >
+                  <a href={url}>{frontmatter.title}</a>
+                </li>
+
+                <ul class="text-[14px] pl-4">
+                  {currentPath === url &&
+                    items.map(item => (
+                      item.depth === 2 &&
+                        <li class={`py-1 pl-3`}>
+                          <a href={`${url}#${item.text.toLowerCase()}`}>{item.text}</a>
+                        </li>
+                    ))
                   }
-                `}
-              >
-                <a href={url}>{frontmatter.title}</a>
-              </li>
+                </ul>
+              </div>
           ))}
         </ul>
       </>

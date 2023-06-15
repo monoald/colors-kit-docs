@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 ---
 
-<Base title={title} category={category} url={url ?? "/"}>
+<Base title={title} category={category} url={url ?? "/"} items={headings}>
   <section
     aria-label="Main content"
     class="bg-content p-8 rounded-xl shadow-inner space-y-4 text-text-active"
