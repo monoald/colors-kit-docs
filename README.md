@@ -1,26 +1,137 @@
-# Astro for Docs
+# colors-kit
 
-## Shipping Zero JavaScript with Astro
+Colors-kit is a zero-dependency module that can help you with a variety of color related tasks, such as:
 
-Astro is an **all-in-one web framework** designed for building **content-focused** websites. With this approach in mind, it delivers an incredible developer experience to build server-first, intuitive to use, flexible and fully-featured websites. Anyone who knows a little bit of HTML and CSS all the way up to seasoned developers can leverage Astro's _opt-in complexity_ framework to build for the web.
+- Converting colors between different formats.
+- Creating color palettes.
+- Rating the contrast of two colors based on WCAG (Web Content Accessibility Guidelines).
+- Generating random colors.
+- Simulating different types of color blindness.
+- Extracting color palettes from an image.
 
-## Astro's biggest perks
+## Installation
 
-Let's see what are the basics that Astro brings to the table, **Astro is...**
+```
+npm install colors-kit
+```
 
--   ...**easy to use** and by design less complex than any other UI framework or language (any valid HTML is a valid Astro component, see [Why Astro - Easy to Use](https://docs.astro.build/en/concepts/why-astro/#easy-to-use)),
--   ...**fast by default** shipping ZERO Javascript out of the box, it takes an MPA approach loading on average 90% less JavaScript (see [MPAs vs SPAs](https://docs.astro.build/en/concepts/mpa-vs-spa/)),
--   ...**incredibly featured, flexible and UI-agnostic** supporting several frameworks (supporting React, Preact, Svelte, Vue and more), an easier JSX, scoped CSS, file-based routing, data-fetching, and a lot more (see [Integrations](https://astro.build/integrations/)).
+## Usage
 
-We've built a sample project called [Astro for Docs](https://astrofordocs.vercel.app/) (see source code: [GH: Astro for Docs](https://github.com/ekqt/astrofordocs)) to showcase how straight-forward and flexible it is to use Astro for Beginners.
+The following examples will give you a glance of what you can achieve with this library.
+To know more about the usage of the library check the documentation.
 
-## What's in the menu for today?
+### Validate
 
-After playing around with this project, it turns out you CAN REALLY build a content-focused website with ZERO JavaScript using Astro. Based on what we've learned, here's what we'd like to show you:
+The Validate API helps validate colors. It ensures that colors have the correct value within the range of their current format. If a value is not within the correct range, the method will throw an error.
 
-1. Writing in "Astro" as a language to write [Astro Components](https://docs.astro.build/en/core-concepts/astro-components/)
-2. Use Markdown files as pages with Astro's [MDX](https://docs.astro.build/en/guides/integrations-guide/mdx/) and [TailwindCSS](https://docs.astro.build/en/guides/integrations-guide/tailwind/) integrations.
-3. Design [nested layouts](https://docs.astro.build/en/core-concepts/layouts/) for better developer experience.
-4. Leverage Astro's [Runtime APIs](https://docs.astro.build/en/reference/api-reference/) to build components.
+```js
+validateCmyk({ c: 69, m: 0, y: 42, k: 17 }) // Valid
 
-We ran `npm create astro@latest` with TypeScript and a blank, empty project.
+validateCmyk({ c: 69, m: 0, y: 20 })
+// Expected output: "Error: Expected property key (k) to be of type number, but got undefined."
+
+validateHex("#45AA0F") // Valid
+
+validateHex("45AAF4")
+// Expected output: "Error: A hash symbol (#) must be present at the begining of the color."
+```
+
+### Convert
+
+The Convert API can handle five input color formats and convert them to seven output color formats.
+
+```js
+hslToRgb({ h: 143, s: 62, l: 54 })
+// Expected output: { r: 66, g: 211, b: 122 }
+
+rgbToHex({ r: 66, g: 211, b: 122 })
+// Expected output: '#42D37A'
+```
+
+### Random
+
+The Random API can create a random color in any of the seven formats the library handles.
+
+getRandomLab()
+// Expected output: { l: 45, a: -81, b: 67 }
+
+getRandomHsv()
+// Expected output: { h: 284, s: 100, v: 13 }
+
+### Color Blind
+
+The Color Blind API can simulate different types of color blindness.
+
+```js
+toDeuteranomaly('#42D37A')
+// Expected output: '#5fad86'
+
+toTritanopia('#f4fa53')
+// Expected output: '#f49bb2'
+
+toProtanopia({ r: 45, g: 75, b: 200 })
+// Expected output: { r: 57, g: 58, b: 170 }
+```
+
+### Palette
+
+The Palette API can generate a color palettes of many different types.
+
+```js
+makeAnalogousPalette('#3e7a72', 5)
+// Expected output: ['#3e7a72', '#3e647a', '#3d457a', '#543e7a', '#723e7a']
+
+makeMonochromaticPalette({ r: 2, g: 69, b: 0 }, 2)
+// Expected output: [
+//  { r: 2, g: 69, b: 0 },
+//  { r: 22, g: 89, b: 12 }
+// ]
+```
+
+makeMonochromaticPalette({ r: 2, g: 69, b: 0 }, 2)
+// Expected output: [
+//  { r: 2, g: 69, b: 0 },
+//  { r: 22, g: 89, b: 12 }
+// ]
+
+### From Image
+
+The fromImage API work with the colors present on an image.
+
+```js
+const imageUrl = 'https://e1.pxfuel.com/desktop-wallpaper/763/1015/desktop-wallpaper-6-blue-and-pink-landscape-nature-landscape-thumbnail.jpg'
+
+async function extract() {
+  const colors = await extractPalette(imageUrl, 5)
+
+  return colors
+}
+
+extract()
+// Expected output: ["#8c84ea', '#e7a6f9', '#3b7ee4', '#080419', '#3d2585']
+```
+
+### Rate
+
+The rate API rates colors based on certain properties and features. Like the Web Content Accessibility Guidelines (WCAG) criteria for contrast rate.
+
+```js
+rateContrast(['#002719', '#c49c1a'])
+// Expected output: {
+//   contrastValue: 6.2,
+//   AA: {
+//     smallText: true,
+//     largeText: true,
+//     uiComponent: true
+//   },
+//   AAA: {
+//     smallText: false,
+//     largeText: true,
+//     uiComponent: true
+//   }
+}
+```
+
+## Typescript 
+
+This library is build with vanilla typescript, so you will find the types you need to work on the `types.d.ts` file. See the documentation to know more about the interfaces and types used.
