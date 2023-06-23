@@ -127,33 +127,33 @@ makeMonochromaticPalette({ r: 105, g: 71, b: 162 }, 3, 40)
 
 ## makeSplitComplementaryPalette
 
-The **makeSplitComplementaryPalette** method makes a split complementary color palette. A split complementary color palette is a complementary palette adding colors that are at the middle of the distance of the 2 main colors.
+The **makeSplitComplementaryPalette** method makes a split complementary color palette of 3 colors. A split complementary color palette search first for the opposite color of a selected color on the color wheel, but takes the proximate colors at the left and right of it.
 
 ### Syntax
 
 ```js
 makeSplitComplementaryPalette(color)
 
-makeSplitComplementaryPalette(color, quantity)
+makeSplitComplementaryPalette(color, variation)
 ```
 
 ### Parameters
 
 **_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
-**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
+**_variation:_** A number indicating the mathematical distance of the complementary colors from the opposite color, by default 50.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of **x** colors.
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 3 colors.
 
 ### Examples
 
 ```js
-makeSplitComplementaryPalette('#166460')
-// Expected output: ['#166460', '#641641, '#643916']
+makeSplitComplementaryPalette('#cf927c')
+// Expected output: ['#cf927c', '#7dcfa0, '#857dcf']
 
-makeSplitComplementaryPalette('#5c653d', 4)
-// Expected output: ['#5c653d', '#3d4866', '#5b3d66', '#3d3e66']
+makeSplitComplementaryPalette('#2180fa', 40)
+// Expected output: ['#2180fa', '#fa511e', '#c7fa1e']
 ```
 
 <hr/>
@@ -297,4 +297,39 @@ makeColorPalette({
   variarion: 50
 })
 // Expected output: ['#b5eb8e', '#8eebb5', '#8ed4eb', '#8ea5eb', '#c48eeb']
+```
+
+<hr/>
+
+
+
+## makeRandomPalette
+
+The **makeRandomPalette** method makes a color palette mixed of any of the previous palette types.
+
+### Syntax
+
+```js
+makeColorPalette(format)
+
+makeColorPalette(format, quantity)
+```
+
+### Parameters
+
+**_format:_** A string whit the color format to return the palette.
+**_quantity:_** The number of colors to be part of the palette, by default 5.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette.
+
+### Examples
+
+```js
+makeRandomPalette('hex')
+// Expected output: ['#89fea6', '#bb8bfe', '#ea8077', '#fe948b', '#ffa89f']
+
+makeRandomPalette('hex', 4)
+// Expected output: ['#c5261b', '#c5981b, '#1bc543', '#1b48c5']
 ```
