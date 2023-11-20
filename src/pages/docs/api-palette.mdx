@@ -13,31 +13,48 @@ The **makeAnalogousPalette** method makes an analogous color palette of **x** co
 ### Syntax
 
 ```js
-makeAnalogousPalette(color)
+makeAnalogousPalette({ ...options })
 
-makeAnalogousPalette(color, quantity)
-
-makeAnalogousPalette(color, quantity, variation)
+makeAnalogousPalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
-**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
-**_variation:_** A number indicating the distance of the colors on the color wheel. The **default** value is 30.
+**_options:_** Object with 5 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 3.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
+- **_shift:_** Mathematical distance the saturation and lightness will take from each color, minimum value 1 and maximum value 10, random if not sent.
+- **_direction:_** Direction on the color wheel the palette will take, random if not sent, values **"left"** or **"right"**.
+
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make an analogous color palette.
+An array of colors of type [Color](/docs/typescript-colors#color) that make an analogous color palette.
 
 ### Examples
 
 ```js
-makeAnalogousPalette('#3e7a72', 5)
+makeAnalogousPalette({
+  color: '#3e7a72',
+  quantity: 5
+})
 // Expected output: ['#3e7a72', '#3e647a', '#3d457a', '#543e7a', '#723e7a']
 
-makeAnalogousPalette('#db490f', 4, 100)
+makeAnalogousPalette({
+  color: '#db490f',
+  quantity: 4,
+  shift: 100
+})
 // Expected output: ['#db490f', '#80db0f', '#0fc5dd', '#0f5ddb']
+
+makeAnalogousPalette()
+// Expected output: [
+//   { h: 88, s: 50, l: 46 },
+//   { h: 19, s: 50, l: 46 },
+//   { h: 343, s: 50, l: 46 }
+// ]
 ```
 
 <hr/>
@@ -51,22 +68,90 @@ The **makeComplementaryPalette** method makes a complementary color palette of 2
 ### Syntax
 
 ```js
-makeComplementaryPalette(color)
+makeComplementaryPalette({ ...options })
+
+makeComplementaryPalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_options:_** Object with 3 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 2.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a complementary color palette of 2 colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a complementary color palette of 2 colors.
 
 ### Examples
 
 ```js
-makeComplementaryPalette('#aeb508')
-// Expected output: ['#aeb508', '#0d08b5']
+makeComplementaryPalette({
+  color: '#692053',
+  quantity: 4
+})
+// Expected output: ['#b96e95', '#692053', '#206936', '#aaf8c0']
+
+makeComplementaryPalette({
+  color: '#ae6913',
+  format: 'hsl'
+})
+// Expected output: [
+//   { h: 39, s:90, l: 50},
+//   { h: 33, s: 80, l: 38},
+//   { h: 213: 2: 80, l: 38}
+// ]
+
+makeComplementaryPalette(),
+// Expected output: [
+//   { h: 292, s: 45, l: 45},
+//   { h: 112, s: 45, l: 45 }
+]
+```
+
+<hr/>
+
+
+
+## makeMixedPalette
+
+The **makeMixedPalette** method makes a color palette mixed of any of the previous palette types.
+
+### Syntax
+
+```js
+makeColorPalette({ ...options })
+
+makeColorPalette()
+```
+
+### Parameters
+
+**_options:_** Object with 3 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 3, default 5.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
+
+### Return value
+
+An array of colors of type [BaseColor](/docs/typescript-colors#basecolor) that make a color palette.
+
+### Examples
+
+```js
+makeMixedPalette({
+  format: 'hex'
+})
+// Expected output: ['#89fea6', '#bb8bfe', '#ea8077', '#fe948b', '#ffa89f']
+
+makeMixedPalette({
+  format: 'hex',
+  quantity: 4
+  })
+// Expected output: ['#c5261b', '#c5981b, '#1bc543', '#1b48c5']
 ```
 
 <hr/>
@@ -80,44 +165,110 @@ The **makeMonochromaticPalette** method makes a monochromatic color palette of *
 ### Syntax
 
 ```js
-makeMonochromaticPalette(color)
+makeMonochromaticPalette({ ...options })
 
-makeMonochromaticPalette(color, quantity)
-
-makeMonochromaticPalette(color, quantity, variation)
+makeMonochromaticPalette()
 ```
 
 ### Parameters
+**_options:_** Object with 4 elements to set the palette output.
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
-**_quantity:_** A number indicating the number of colors to be on the color palette. The **default** value is 3.
-**_variation:_** A number indicating the variation of lightness of the previous color. The **default** value is 20.
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 3.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
+- **_shift:_** Mathematical distance the saturation and lightness will take from each color, minimum value 1 and maximum value 10, random if not sent.
+
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a monochromatic color palette of **x** colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a monochromatic color palette of **x** colors.
 
 ### Examples
 
 ```js
-makeMonochromaticPalette({ r: 35, g: 0, b: 7 })
+makeMonochromaticPalette({
+  color: { r: 35, g: 0, b: 7 },
+})
 // Expected output: [
 //  { r: 35, g: 0, b: 7 },
 //  { r: 55, g: 15, b: 27 },
 //  { r: 75, g: 35, b: 47 }
 // ]
 
-makeMonochromaticPalette({ r: 2, g: 69, b: 0 }, 2)
+makeMonochromaticPalette({
+  color: { r: 2, g: 69, b: 0 },
+  quantity: 2
+})
 // Expected output: [
 //  { r: 2, g: 69, b: 0 },
 //  { r: 22, g: 89, b: 12 }
 // ]
 
-makeMonochromaticPalette({ r: 105, g: 71, b: 162 }, 3, 40)
+makeMonochromaticPalette()
 // Expected output: [
-//  { r: 105, g: 71, b: 162 },
-//  { r: 125, g: 91, b: 182 },
-//  { r: 165, g: 131, b: 222 }
+//  { h: 163, s: 20, l: 93 },
+//  { h: 157, s: 21, l: 73 },
+//  { h: 164, s: 44, l: 47 }
+// ]
+```
+
+<hr/>
+
+
+
+## makeShadesPalette
+
+The **makeShadesPalette** method makes a monochromatic color palette of **x** colors. A monochromatic palette is a set of colors that start with a base color. The following colors are variations of that base color, created by changing the lightness of it.
+
+### Syntax
+
+```js
+makeShadesPalette({ ...options })
+
+makeShadesPalette()
+```
+
+### Parameters
+**_options:_** Object with 4 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 3.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
+- **_shift:_** Mathematical distance the saturation and lightness will take from each color, minimum value 1 and maximum value 10, random if not sent.
+
+
+### Return value
+
+An array of colors of type [Color](/docs/typescript-colors#color) that make a monochromatic color palette of **x** colors.
+
+### Examples
+
+```js
+makeShadesPalette({
+  color: '#0d0c18',
+})
+// Expected output: [
+//  '#0d0c18',
+//  '#e9e7f3',
+//  '#5e51a9'
+// ]
+
+makeShadesPalette({
+  color: '#997429',
+  format: 'rgb'
+})
+// Expected output: [
+//  { r: 40, g: 58, b: 38 },
+//  { r: 40, g: 58, b: 23 }
+//  { r: 39, g: 57, b: 9 }
+//  { r: 39, g: 58, b: 87 }
+// ]
+
+makeShadesPalette()
+// Expected output: [
+//  { h: 163, s: 20, l: 93 },
+//  { h: 157, s: 21, l: 73 },
+//  { h: 164, s: 44, l: 47 }
 // ]
 ```
 
@@ -132,28 +283,40 @@ The **makeSplitComplementaryPalette** method makes a split complementary color p
 ### Syntax
 
 ```js
-makeSplitComplementaryPalette(color)
+makeSplitComplementaryPalette({ ...options })
 
-makeSplitComplementaryPalette(color, variation)
+makeSplitComplementaryPalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
-**_variation:_** A number indicating the mathematical distance of the complementary colors from the opposite color, by default 50.
+**_options:_** Object with 4 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 3.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
+- **_shift:_** Mathematical distance the saturation and lightness will take from each color, minimum value 1 and maximum value 10, random if not sent.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 3 colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a color palette of 3 colors.
 
 ### Examples
 
 ```js
-makeSplitComplementaryPalette('#cf927c')
+makeSplitComplementaryPalette({
+  color: '#cf927c'
+})
 // Expected output: ['#cf927c', '#7dcfa0, '#857dcf']
 
-makeSplitComplementaryPalette('#2180fa', 40)
+makeSplitComplementaryPalette({
+  color: '#2180fa',
+  shift: 40
+})
 // Expected output: ['#2180fa', '#fa511e', '#c7fa1e']
+
+makeSplitComplementaryPalette()
+// Expected output: ['#775713', '#136d77', '#2d1377']
 ```
 
 <hr/>
@@ -167,22 +330,34 @@ The **makeSquarePalette** method makes a square color palette of 4 colors. A squ
 ### Syntax
 
 ```js
-makeSquarePalette(color)
+makeSquarePalette({ ...options })
+
+makeSquarePalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_options:_** Object with 3 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 4, default 4.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a color palette of 4 colors.
 
 ### Examples
 
 ```js
 makeSquarePalette('#c1ea8c')
 // Expected output: ['#c1ea8c', '#8beae3, '#b48bea', '#ea8b91']
+
+makeSquarePalette({
+  format: 'hex'
+})
+// Expected outou: ['#58fd5b', '#58a8fd', '#fd58fb', '#fdae58']
+
 ```
 
 <hr/>
@@ -196,22 +371,33 @@ The **makeTetradicPalette** method makes a tetradic color palette of 4 colors. A
 ### Syntax
 
 ```js
-makeTetradicPalette(color)
+makeTetradicPalette({ ...options })
+
+makeTetradicPalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_options:_** Object with 3 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 4.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a color palette of 4 colors.
 
 ### Examples
 
 ```js
 makeTetradicPalette('#ff5387')
 // Expected output: ['#ff5387', '#ff7654, '#43cca3', '#225866']
+
+makeTetradicPalette({
+  format: 'hex'
+})
+// Expected output: ['#cca374', '#c9cc74, '#749dcc', '#3c3a66']
 ```
 
 <hr/>
@@ -225,22 +411,33 @@ The **makeTriadicPalette** method makes a triadic color palette of 3 colors. A t
 ### Syntax
 
 ```js
-makeTriadicPalette(color)
+makeTriadicPalette({ ...options })
+
+makeTriadicPalette()
 ```
 
 ### Parameters
 
-**_color:_** A color of type [BaseColor](/docs/colors#basecolor), the color which the color palette will start. The method will identify the correct format to operate.
+**_options:_** Object with 3 elements to set the palette output.
+
+- **_color:_** Color of type [Color](/docs/typescript-colors#color), the color which the color palette will start, random HSL color if not sent.
+- **_quantity:_** Quantity of colors to be on the palette, **min** value 2, default 4.
+- **_format:_** Color format wich the method will return the palette, if not sent will take the value of the receive color format.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette of 4 colors.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a color palette of 4 colors.
 
 ### Examples
 
 ```js
 makeTriadicPalette('#6248cc')
 // Expected output: ['#6248cc', '#cb6248, '#48cb62']
+
+makeTriadicPalette({
+  format: 'hex'
+})
+// Expected output: ['#931b1f', '#1f931b, '#1b1f93']
 ```
 
 <hr/>
@@ -254,82 +451,48 @@ The **makeColorPalette** method makes a color palette of any of the previous pal
 ### Syntax
 
 ```js
-makeColorPalette(options)
+makeColorPalette({ ...options })
 ```
 
 ### Parameters
 
 **_options:_** An object with 2 obligatory option and 4 optional options.
 
-- **_paletteType (obligatory):_** A string of type [Palette](/docs/colors#palette) to select the type of color palette you want.
-- **_format (obligatory):_** A string, it can only contain a value of the input formats (cmyk, hex, hsl, hsv or rgb).
-- **_randomColor (optional):_** A boolean value to determine whether to create a random color to use as the base color.
-- **_color (optional):_** A color of type [BaseColor](/docs/colors#basecolor) to use as base color, it should match the selected **format**.
-- **_quantity (optional):_** A number, if the palette type you select receive a quantity to create a certain number of colors, you can send a value.
-- **_variation (optional):_** A number, if the palette type you select receive a variarion to modify the result, you can send a value.
+- **_color:_** Color of type [Color](/docs/typescript-colors#color) to use as base color, it should match the selected **format**.
+- **_paletteType (required):_** A string of type [Palette](/docs/typescript-colors#palette) to select the type of color palette you want.
+- **_format:_** A string, it can only contain a value of the input formats (cmyk, hex, hsl, hsv or rgb).
+- **_quantity:_** Number, if the palette type you select receive a quantity to create a certain number of colors, you can send a value.
+- **_shift:_** Mathematical distance the saturation and lightness will take from each color.
 
 ### Return value
 
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette.
+An array of colors of type [Color](/docs/typescript-colors#color) that make a color palette.
 
 ### Examples
 
 ```js
 makeColorPalette({
   paletteType: 'monochromatic',
-  format: 'hex',
-  randomColor: true
+  format: 'hex'
 })
 // Expected output: ['#02001d', '#2a1245, '#523a6d']
 
 makeColorPalette({
+  color: { r: 159, g: 136, b: 255 },
   paletteType: 'complementary',
   format: 'rgb',
-  color: { r: 159, g: 136, b: 255 }
 })
 // Expected output: [{ r: 159, g: 136, b: 255 }, { r: 232, g: 255, b: 138 }]
 
 makeColorPalette({
+  color: '#b5eb8e',
   paletteType: 'analogous',
   format: 'hex',
-  color: '#b5eb8e',
   quantity: 5,
-  variarion: 50
+  shift: 50
 })
 // Expected output: ['#b5eb8e', '#8eebb5', '#8ed4eb', '#8ea5eb', '#c48eeb']
-```
 
-<hr/>
-
-
-
-## makeRandomPalette
-
-The **makeRandomPalette** method makes a color palette mixed of any of the previous palette types.
-
-### Syntax
-
-```js
-makeColorPalette(format)
-
-makeColorPalette(format, quantity)
-```
-
-### Parameters
-
-**_format:_** A string whit the color format to return the palette.
-**_quantity:_** The number of colors to be part of the palette, by default 5.
-
-### Return value
-
-An array of colors of type [BaseColor](/docs/colors#basecolor) that make a color palette.
-
-### Examples
-
-```js
-makeRandomPalette('hex')
-// Expected output: ['#89fea6', '#bb8bfe', '#ea8077', '#fe948b', '#ffa89f']
-
-makeRandomPalette('hex', 4)
-// Expected output: ['#c5261b', '#c5981b, '#1bc543', '#1b48c5']
+makeColorPalette({ paletteType: 'shades' })
+// Expected output: ['#0d0c18', '#e9e7f3', '#5e51a9']
 ```

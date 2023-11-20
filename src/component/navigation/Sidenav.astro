@@ -12,12 +12,6 @@ const { pages, currentPath, items } = Astro.props;
 
 const filteredPages = pages.filter((p) => Boolean(p.frontmatter.category));
 
-const sortedPages = filteredPages.sort((a, b) =>
-  a.frontmatter.category.localeCompare(b.frontmatter.category, "en", {
-    sensitivity: "base",
-  })
-);
-
 const categories = [
   ...new Set(filteredPages.map((p) => p.frontmatter.category)),
 ];
@@ -36,7 +30,7 @@ const categories = [
           aria-label={`Pages in ${category}`}
           class="text-lg lg:text-base"
         >
-          {sortedPages
+          {filteredPages
             .filter(
               ({ frontmatter }) => frontmatter.category === category
             )

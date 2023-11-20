@@ -43,7 +43,7 @@ const otherColors: ColorFormats = {
 
 ## BaseColor
 
-This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, or Rgb. The Lab and XYZ formats are excluded because they are imprecise when converting between types.
+This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, Rgb, Lab or XYZ.
 
 ### Type
 
@@ -62,7 +62,7 @@ const otherColor: BaseColor = { r: 66, g: 211, b: 122 };
 
 
 
-## AnyFormat
+## Color
 
 This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, Lab, Rgb, or Xyz. This type is used in this set of packages as a return type cause it contains imprecise types like Lab and Xyz.
 
@@ -71,12 +71,12 @@ This type determines whether a value is of type Cmyk, Hex, Hsl, Hsv, Lab, Rgb, o
 Each value should be as its interface or type specifies, read about [format](/formats) types to know more.
 
 ```js
-type AnyFormat = Cmyk | Hex | Hsl | Hsv | Lab | Rgb | Xyz
+type Color = Cmyk | Hex | Hsl | Hsv | Lab | Rgb | Xyz
 
 // Examples
-const color: AnyFormat = '#42D37A'
+const color: Color = '#42D37A'
 
-const rgbColor: AnyFormat = { r: 66, g: 211, b: 122 }
+const rgbColor: Color = { r: 66, g: 211, b: 122 }
 
-const labColor: AnyFormat = { l: 76, a: -58, b: 33 }
+const labColor: Color = { l: 76, a: -58, b: 33 }
 ```
