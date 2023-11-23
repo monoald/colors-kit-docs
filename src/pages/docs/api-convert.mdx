@@ -22,7 +22,7 @@ The output formats are:
 - RGB
 - XYZ.
 
-Every method uses the [validate API](/docs/api-validate) within to avoid operating with invalid values. If a value is invalid, an error will be thrown.
+Every method uses the [validate API](/colors-kit-docs/docs/api-validate) within to avoid operating with invalid values. If a value is invalid, an error will be thrown.
 
 <hr/>
 
@@ -49,11 +49,11 @@ cmykToXyz(color)
 
 ### Parameters
 
-**_color:_** An object of type [Cmyk](/docs/typescript-formats#cmyk) that contains number values in a certain interval (check [validate API](/docs/api-validate#validatecmyk)).
+**_color:_** An object of type [Cmyk](/colors-kit-docs/docs/typescript-formats#cmyk) that contains number values in a certain interval (check [validate API](/colors-kit-docs/docs/api-validate#validatecmyk)).
 
 ### Return value
 
-Depending on the target format, it can return an object of type [Hsl](/docs/api-validate#validatehsl), [Hsv](/docs/api-validate#validatehsv), [Lab](/docs/api-validate#validatelab), [Rgb](/docs/api-validate#validatergb), or a string of type [Hexadecimal](/docs/api-validate#validatehex).
+Depending on the target format, it can return an object of type [Hsl](/colors-kit-docs/docs/api-validate#validatehsl), [Hsv](/colors-kit-docs/docs/api-validate#validatehsv), [Lab](/colors-kit-docs/docs/api-validate#validatelab), [Rgb](/colors-kit-docs/docs/api-validate#validatergb), or a string of type [Hexadecimal](/colors-kit-docs/docs/api-validate#validatehex).
 
 ### Examples
 
@@ -79,7 +79,7 @@ cmykToXyz(cmyk) // Expected output: { x: 29, y: 49.15, z: 26.36 }
 
 ## hexTo
 
-The **hexTo** method convert a hexadecimal color to any of the 7 output formats. It receive the corresponding [format](/docs/typescript-formats#hexadecimal) for Hexadecimal colors.
+The **hexTo** method convert a hexadecimal color to any of the 7 output formats. It receive the corresponding [format](/colors-kit-docs/docs/typescript-formats#hexadecimal) for Hexadecimal colors.
 
 ### Syntax 
 ```js
@@ -102,7 +102,7 @@ hexToXyz(color)
 
 ### Return value
 
-Depending on the target format, it can return an object of type [Cmyk](/docs/api-validate#validatecmyk), [Hsl](/docs/api-validate#validatehsl), [Hsv](/docs/api-validate#validatehsv), [Lab](/docs/api-validate#validatelab), [Rgb](/docs/api-validate#validatergb).
+Depending on the target format, it can return an object of type [Cmyk](/colors-kit-docs/docs/api-validate#validatecmyk), [Hsl](/colors-kit-docs/docs/api-validate#validatehsl), [Hsv](/colors-kit-docs/docs/api-validate#validatehsv), [Lab](/colors-kit-docs/docs/api-validate#validatelab), [Rgb](/colors-kit-docs/docs/api-validate#validatergb).
 
 ### Examples
 
@@ -128,7 +128,7 @@ hexToXyz(hex) // Expected output: { x: 29, y: 49.15, z: 26.36 }
 
 ## hslTo
 
-The **hslTo** method convert an Hsl color to any of the 7 output formats. It receive the corresponding [format](/docs/typescript-formats#hsl) for HSL colors.
+The **hslTo** method convert an Hsl color to any of the 7 output formats. It receive the corresponding [format](/colors-kit-docs/docs/typescript-formats#hsl) for HSL colors.
 
 ```js
 hslToHex(color)
@@ -146,11 +146,11 @@ hslToXyz(color)
 
 ### Parameters
 
-**_color:_** An object of type [Hsl](/doc/typescript-formats##hsl) that contains number values in a certain interval (check [validate API](/docs/api-validate#validatehsl)).
+**_color:_** An object of type [Hsl](/colors-kit-docs/doc/typescript-formats##hsl) that contains number values in a certain interval (check [validate API](/colors-kit-docs/docs/api-validate#validatehsl)).
 
 ### Return value
 
-Depending on the target format, it can return an object of type [Cmyk](/docs/api-validate#validatecmyk), [Hsv](/docs/api-validate#validatehsv), [Lab](/docs/api-validate#validatelab), [Rgb](/docs/api-validate#validatergb), or a string of type [Hexadecimal](/docs/api-validate#validatehex).
+Depending on the target format, it can return an object of type [Cmyk](/colors-kit-docs/docs/api-validate#validatecmyk), [Hsv](/colors-kit-docs/docs/api-validate#validatehsv), [Lab](/colors-kit-docs/docs/api-validate#validatelab), [Rgb](/colors-kit-docs/docs/api-validate#validatergb), or a string of type [Hexadecimal](/colors-kit-docs/docs/api-validate#validatehex).
 
 ### Examples
 
@@ -176,7 +176,7 @@ hslToXyz(hsl) // Expected output: { x: 29, y: 49.15, z: 26.36 }
 
 ## hsvTo
 
-The **hsvTo** method convert an Hsv color to any of the 7 output formats. It receive the corresponding [format](/docs/typescript-formats#hsv) for HSV colors.
+The **hsvTo** method convert an Hsv color to any of the 7 output formats. It receive the corresponding [format](/colors-kit-docs/docs/typescript-formats#hsv) for HSV colors.
 
 ```js
 hsvToHex(color)
@@ -194,11 +194,11 @@ hsvToXyz(color)
 
 ### Parameters
 
-**_color:_** An object of type [Hsv](/doc/typescript-formats##hsv) that contains number values in a certain interval (check [validate API](/docs/api-validate#validatehsv)).
+**_color:_** An object of type [Hsv](/colors-kit-docs/doc/typescript-formats##hsv) that contains number values in a certain interval (check [validate API](/colors-kit-docs/docs/api-validate#validatehsv)).
 
 ### Return value
 
-Depending on the target format, it can return an object of type [Cmyk](/docs/api-validate#validatecmyk), [Hsl](/docs/api-validate#validatehsl), [Lab](/docs/api-validate#validatelab), [Rgb](/docs/api-validate#validatergb), or a string of type [Hexadecimal](/docs/api-validate#validatehex).
+Depending on the target format, it can return an object of type [Cmyk](/colors-kit-docs/docs/api-validate#validatecmyk), [Hsl](/colors-kit-docs/docs/api-validate#validatehsl), [Lab](/colors-kit-docs/docs/api-validate#validatelab), [Rgb](/colors-kit-docs/docs/api-validate#validatergb), or a string of type [Hexadecimal](/colors-kit-docs/docs/api-validate#validatehex).
 
 ### Examples
 
@@ -224,7 +224,7 @@ hsvToXyz(hsv) // Expected output: { x: 29, y: 49.15, z: 26.36 }
 
 ## rgbTo
 
-The **rgbTo** method convert an Rgb color to any of the 7 output formats. It receive the corresponding [format](/docs/typescript-formats#rgb) for HSL colors.
+The **rgbTo** method convert an Rgb color to any of the 7 output formats. It receive the corresponding [format](/colors-kit-docs/docs/typescript-formats#rgb) for HSL colors.
 
 ```js
 rgbToHex(color)
@@ -242,11 +242,11 @@ rgbToXyz(color)
 
 ### Parameters
 
-**_color:_** An object of type [Rgb](/doc/typescript-formats##rgb) that contains number values in a certain interval (check [validate API](/docs/api-validate#validatergb)).
+**_color:_** An object of type [Rgb](/colors-kit-docs/doc/typescript-formats##rgb) that contains number values in a certain interval (check [validate API](/colors-kit-docs/docs/api-validate#validatergb)).
 
 ### Return value
 
-Depending on the target format, it can return an object of type [Cmyk](/docs/api-validate#validatecmyk), [Hsl](/docs/api-validate#validatehsl), [Hsv](/docs/api-validate#validatehsv), [Lab](/docs/api-validate#validatelab), or a string of type [Hexadecimal](/docs/api-validate#validatehex).
+Depending on the target format, it can return an object of type [Cmyk](/colors-kit-docs/docs/api-validate#validatecmyk), [Hsl](/colors-kit-docs/docs/api-validate#validatehsl), [Hsv](/colors-kit-docs/docs/api-validate#validatehsv), [Lab](/colors-kit-docs/docs/api-validate#validatelab), or a string of type [Hexadecimal](/colors-kit-docs/docs/api-validate#validatehex).
 
 ### Examples
 
@@ -280,7 +280,7 @@ colorFormatConverter(color, options)
 
 ### Parameters
 
-**_color:_** An object of type [Cmyk](/doc/typescript-formats##cmyk), [Hsl](/doc/typescript-formats##hsl), [Hsv](/doc/typescript-formats##hsv), or [Rgb](/doc/typescript-formats##rgb), or a string type [Hex](/doc/typescript-formats##hex).
+**_color:_** An object of type [Cmyk](/colors-kit-docs/doc/typescript-formats##cmyk), [Hsl](/colors-kit-docs/doc/typescript-formats##hsl), [Hsv](/colors-kit-docs/doc/typescript-formats##hsv), or [Rgb](/colors-kit-docs/doc/typescript-formats##rgb), or a string type [Hex](/colors-kit-docs/doc/typescript-formats##hex).
 
 **_options:_** An object with 4 optional options.
 
@@ -291,7 +291,7 @@ colorFormatConverter(color, options)
 
 ### Return value
 
-Returns an object of type [ColorFormats](/docs/typescript-colors#colorformats). Depending on the options **targetFormat** and **allFormats**, the object can contain every output format or just some of them.
+Returns an object of type [ColorFormats](/colors-kit-docs/docs/typescript-colors#colorformats). Depending on the options **targetFormat** and **allFormats**, the object can contain every output format or just some of them.
 
 ### Examples 
 

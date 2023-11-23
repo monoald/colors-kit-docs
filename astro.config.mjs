@@ -8,5 +8,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://monoald.github.io/',
+	base: '/colors-kit-docs',
   integrations: [tailwind(), mdx()]
 });
